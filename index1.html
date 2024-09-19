@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Gold Price</title>
+    <script>
+        async function fetchQuote() {
+            console.log(1);
+            try {
+                const response = await fetch('http://localhost:3000/ninja-api');
+                const data = await response.json();
+                document.getElementById('price').innerText = `${data.price}`;
+                document.getElementById('updated').innerText = `${data.updated}`;
+            } catch (error) {
+                console.error('Error fetching quote:', error);
+            }
+        }
+
+        window.onload = fetchQuote;
+    </script>
+</head>
+<body>
+    <h1>Daily Gold Price</h1>
+    <p id="price"></p>
+    <p id="updated"></p>
+</body>
+</html>
